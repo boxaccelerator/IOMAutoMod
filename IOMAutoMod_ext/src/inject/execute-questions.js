@@ -21,7 +21,7 @@ function startExecute(mapResult) {
 
   const allKeys = Object.keys(mapResult)
   // 50% что будет ошибка в одном из вопросов
-  let randomOneMistakeNumber
+  // let randomOneMistakeNumber
   // if (getRandomInt(0, 1) === 1) {
   //   randomOneMistakeNumber = getRandomInt(1, allKeys.length)
   //   log('БУДЕТ ДОПУЩЕНА СПЕЦИАЛЬНО ОШИБКА в вопросе №' + (randomOneMistakeNumber))
@@ -69,6 +69,14 @@ function startExecute(mapResult) {
     const testAnswer = (getEl, checkedClassName) => {
       const isChecked = getEl().className.indexOf(checkedClassName) >= 0
       const getSpan = () => getEl().querySelector('span')
+      css(getEl(), {
+        'background-color': '#ff50ff',
+        color: '#000000'
+      });
+      css(getSpan(), {
+        'background-color': '#0080ff',
+        color: '#000000'
+      });
 
       // подходит как для множества так и для одно элемента
       const answerFromPage = getSpan().textContent
@@ -88,28 +96,28 @@ function startExecute(mapResult) {
          ["ответ 4"],
          ]
          */
-        if (pageQuestionNumber === randomOneMistakeNumber) {
-          if (typeof findAnswers === 'undefined' || findAnswers.length === 0 || findAnswers[0].length === 0) {
-            // нету ответов - выбираем первый результат
-            hasAnyAnswer = getSpan
-            setTimeout(() => getSpan().click(), 100)
-            return true
-          }
-        }
+        // if (pageQuestionNumber === randomOneMistakeNumber) {
+        //   if (typeof findAnswers === 'undefined' || findAnswers.length === 0 || findAnswers[0].length === 0) {
+        //     // нету ответов - выбираем первый результат
+        //     hasAnyAnswer = getSpan
+        //     setTimeout(() => getSpan().click(), 100)
+        //     return true
+        //   }
+        // }
         const result = findAnswers?.some((answersVariant, variantIndex) => {
           return answersVariant.some((answer) => {
             const isCorrect = compareAnswer(answer, answerFromPage)
             // logDebug('isCorrect', isCorrect, pageQuestionNumber, randomOneMistakeNumber)
-            if (
-              // если нужно сделать ошибку, то выбираем неправильный вариант для клика
-              pageQuestionNumber === randomOneMistakeNumber && !isCorrect
-              || isCorrect
-            ) {
-              hasAnyAnswer = getSpan
-              // todo @ANKU @CRIT @MAIN - не всегда проставляет - при переключении фокуса
-              getSpan().click()
-              return true
-            }
+            // if (
+            //   // если нужно сделать ошибку, то выбираем неправильный вариант для клика
+            //   pageQuestionNumber === randomOneMistakeNumber && !isCorrect
+            //   || isCorrect
+            // ) {
+            //   hasAnyAnswer = getSpan
+            //   // todo @ANKU @CRIT @MAIN - не всегда проставляет - при переключении фокуса
+            //   getSpan().click()
+            //   return true
+            // }
           })
           // if (hasAnyAnswer) {
           //   // если нашли ответы прекращаем вариантов блоков ответов перебирать
@@ -126,6 +134,10 @@ function startExecute(mapResult) {
 
     // нужно каждый раз искать, так как форма обновляется после проставление ответа
     const answersEls = document.querySelectorAll('.mat-mdc-checkbox')
+    css(answersEls, {
+      'background-color': '#ccccff',
+      color: '#000000'
+    });
     const isMultiple = answersEls.length > 0
     if (isMultiple) {
       // НЕСКОЛЬКО ОТВЕТОВ
@@ -142,6 +154,10 @@ function startExecute(mapResult) {
     } else {
       // ОДИН ОТВЕТ
       const radioEls = document.querySelectorAll('.mat-mdc-radio-button')
+      css(radioEls, {
+        'background-color': '#ccccff',
+        color: '#000000'
+      });
       radioEls.forEach((radioEl, i) => {
         testAnswer(
           // radioEl,
@@ -173,6 +189,10 @@ ${Object.keys(pageAnswersMap).map((qu, index) => `${index + 1}) ${qu}`).join('\n
               if (index === (manualIndexPlus - 1)) {
                 // вызываем поиск элемента, так как если их много дом каждый раз меняется
                 const getSpanInner = pageAnswersMap[title]
+                css(getSpanInner, {
+                  'background-color': '#00ff00',
+                  color: '#005000'
+                });
                 getSpanInner().click()
                 hasAnyAnswer = true
               }
@@ -189,7 +209,10 @@ ${Object.keys(pageAnswersMap).map((qu, index) => `${index + 1}) ${qu}`).join('\n
 
       //const buttonApplyEl = document.querySelector('#questionAnchor > div > lib-question > mat-card > div > mat-card-actions > div > button.question-buttons-primary.mdc-button.mdc-button--raised.mat-mdc-raised-button.mat-primary.mat-mdc-button-base.ng-star-inserted')
       const buttonApplyEl = document.querySelector('mat-card-actions button.question-buttons-primary.mdc-button.mat-primary')
-
+      css(buttonApplyEl, {
+        'background-color': '#0000ff',
+        color: '#ff00ff'
+      });
       if (buttonApplyEl.textContent === 'Завершить тестирование') {
         log('КОНЕЦ. ПРОЙДЕНО ' + pageQuestionNumber + 'ответов.')
         return true

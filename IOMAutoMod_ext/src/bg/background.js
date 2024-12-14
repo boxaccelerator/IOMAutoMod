@@ -9,7 +9,7 @@
 
 
 const manifestData = chrome.runtime.getManifest();
-const VERSION = manifestData.version
+const VERSION = manifestData.version;
 
 
 async function getCurrentTab() {
@@ -35,14 +35,14 @@ export const MODULE_STATUS = {
   ERROR: 'ERROR',
 }
 export const MODULE_STATUS_TEXT_MAP = {
-  [MODULE_STATUS.START_SERVICE]: ['. . .', '#505050', 'Загрузка'],
-  [MODULE_STATUS.NEW]: ['[---]', '#808080', 'Ожидание запуска теста'],
-  [MODULE_STATUS.SEARCHING]: ['[#--]', '#ffd200', 'Поиск ответов в интернете'],
-  [MODULE_STATUS.WAIT_QA_FORM]: ['[##-]', '#ffd200', 'Нажмите "Начать тест"'],
-  [MODULE_STATUS.READY]: ['[###]', '#00ffff', 'Нажмите для запуска'],
-  [MODULE_STATUS.EXECUTING]: ['[>>>]', '#ffd200', 'Подстановка ответов'],
-  [MODULE_STATUS.DONE]: ['[###]', '#0080ff', 'Все подставлено'],
-  [MODULE_STATUS.ERROR]: ['[ERR]', '#ff2323', 'ОШИБКА'],
+  [MODULE_STATUS.START_SERVICE]: [' ', '#505050', 'Загрузка'],
+  [MODULE_STATUS.NEW]: [' ', '#c08000', 'Ожидание запуска теста'],
+  [MODULE_STATUS.SEARCHING]: [' ', '#808080', 'Поиск ответов в интернете'],
+  [MODULE_STATUS.WAIT_QA_FORM]: [' ', '#c08000', 'Нажмите "Начать тест"'],
+  [MODULE_STATUS.READY]: [' ', '#00ff00', 'Нажмите для запуска'],
+  [MODULE_STATUS.EXECUTING]: [' ', '#00ffff', 'Подстановка ответов'],
+  [MODULE_STATUS.DONE]: [' ', '#0080ff', 'Все подставлено'],
+  [MODULE_STATUS.ERROR]: ['!', '#ff2323', 'ОШИБКА'],
 }
 
 // ======================================================
