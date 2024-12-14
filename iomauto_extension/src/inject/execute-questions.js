@@ -22,10 +22,10 @@ function startExecute(mapResult) {
   const allKeys = Object.keys(mapResult)
   // 50% что будет ошибка в одном из вопросов
   let randomOneMistakeNumber
-  if (getRandomInt(0, 1) === 1) {
-    randomOneMistakeNumber = getRandomInt(1, allKeys.length)
-    log('БУДЕТ ДОПУЩЕНА СПЕЦИАЛЬНО ОШИБКА в вопросе №' + (randomOneMistakeNumber))
-  }
+  // if (getRandomInt(0, 1) === 1) {
+  //   randomOneMistakeNumber = getRandomInt(1, allKeys.length)
+  //   log('БУДЕТ ДОПУЩЕНА СПЕЦИАЛЬНО ОШИБКА в вопросе №' + (randomOneMistakeNumber))
+  // }
 
   let pageQuestionNumber = 1
   let prevQuestion
@@ -37,6 +37,11 @@ function startExecute(mapResult) {
     if (!questionEl) {
       debugger
       throw new IOMError('Неправильная верстка блока вопросов')
+    } else {
+      css(questionEl, {
+        'background-color': '#ff8080',
+        color: '#500000'
+      });
     }
     const question = questionEl.textContent
 
@@ -122,7 +127,7 @@ function startExecute(mapResult) {
     // нужно каждый раз искать, так как форма обновляется после проставление ответа
     const answersEls = document.querySelectorAll('.mat-mdc-checkbox')
     const isMultiple = answersEls.length > 0
-    if (answersEls.length > 0) {
+    if (isMultiple) {
       // НЕСКОЛЬКО ОТВЕТОВ
       for(let i=0; i < answersEls.length; i++) {
         testAnswer(
@@ -131,7 +136,7 @@ function startExecute(mapResult) {
           'mat-mdc-checkbox-checked'
           // todo @ANKU @LOW - есть бага что если 4 ответа, успевают проставляться только 3
           // Болезнь Фабри (по утвержденным клиническим рекомендациям) - 2024
-          // Вопрос 29:  К ложноположительным результатам может приводить
+          // Вопрос 29: К ложноположительным результатам может приводить
         )
       }
     } else {

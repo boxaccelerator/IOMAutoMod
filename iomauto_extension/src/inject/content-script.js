@@ -25,7 +25,6 @@ async function searchByCertName() {
       .trim()
       .replaceAll(/^( )+/g,'')
       .replaceAll(/ - Предварительное тестирование$/g,'')
-      // todo
       .replaceAll(/ - Итоговое тестирование$/g,'')
 
     log('Название, ', certName)

@@ -1,12 +1,15 @@
+const manifestData = chrome.runtime.getManifest();
+const VERSION = manifestData.version
+
 function log(msg, ...args) {
-  console.log(msg, ...args)
+  console.log(`[IOMAutoMod v${VERSION}] < log >`, msg, ...args)
 }
 function logDebug(msg, ...args) {
-  console.log('DEBUG: ', msg, ...args)
+  console.log(`[IOMAutoMod v${VERSION}] <debug>`, msg, ...args)
 }
 
 function logError(msg, ...args) {
-  console.error(msg, ...args)
+  console.error(`[IOMAutoMod v${VERSION}] <error>`, msg, ...args)
 }
 
 function logErrorNotification(error, ...args) {
@@ -15,6 +18,11 @@ function logErrorNotification(error, ...args) {
     error,
   })
   logError(error, ...args)
+}
+
+function css(element, style) {
+  for (const property in style)
+      element.style[property] = style[property];
 }
 
 /**
