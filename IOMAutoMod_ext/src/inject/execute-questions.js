@@ -18,10 +18,10 @@ function startExecute(mapResult) {
   const style = document.createElement('style');
   style.innerHTML = `
 .mat-mdc-radio-button {
-    background-color: #ff50ff;
+    background-color: #8000ff;
 }
 .mat-mdc-checkbox {
-    background-color: #ff50ff;
+    background-color: #8000ff;
 }
       `;
   document.head.appendChild(style);
@@ -200,8 +200,8 @@ ${Object.keys(pageAnswersMap).map((qu, index) => `${index + 1}) ${qu}`).join('\n
       //const buttonApplyEl = document.querySelector('#questionAnchor > div > lib-question > mat-card > div > mat-card-actions > div > button.question-buttons-primary.mdc-button.mdc-button--raised.mat-mdc-raised-button.mat-primary.mat-mdc-button-base.ng-star-inserted')
       const buttonApplyEl = document.querySelector('mat-card-actions button.question-buttons-primary.mdc-button.mat-primary')
       css(buttonApplyEl, {
-        'background-color': '#0000ff',
-        color: '#ff00ff'
+        'background-color': '#8000ff',
+        color: '#000000'
       });
       if (buttonApplyEl.textContent === 'Завершить тестирование') {
         log('КОНЕЦ. ПРОЙДЕНО ' + pageQuestionNumber + 'ответов.')

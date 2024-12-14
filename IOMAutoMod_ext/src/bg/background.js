@@ -37,12 +37,12 @@ export const MODULE_STATUS = {
 export const MODULE_STATUS_TEXT_MAP = {
   [MODULE_STATUS.START_SERVICE]: [' ', '#505050', 'Загрузка'],
   [MODULE_STATUS.NEW]: [' ', '#c08000', 'Ожидание запуска теста'],
-  [MODULE_STATUS.SEARCHING]: [' ', '#808080', 'Поиск ответов в интернете'],
-  [MODULE_STATUS.WAIT_QA_FORM]: [' ', '#c08000', 'Нажмите "Начать тест"'],
-  [MODULE_STATUS.READY]: [' ', '#00ff00', 'Нажмите для запуска'],
+  [MODULE_STATUS.SEARCHING]: [' ', '#ff5000', 'Поиск ответов в интернете'],
+  [MODULE_STATUS.WAIT_QA_FORM]: [' ', '#80ff00', 'Нажмите "Начать тест"'],
+  [MODULE_STATUS.READY]: [' ', '#00ff50', 'Нажмите для запуска'],
   [MODULE_STATUS.EXECUTING]: [' ', '#00ffff', 'Подстановка ответов'],
-  [MODULE_STATUS.DONE]: [' ', '#0080ff', 'Все подставлено'],
-  [MODULE_STATUS.ERROR]: ['!', '#ff2323', 'ОШИБКА'],
+  [MODULE_STATUS.DONE]: [' ', '#0050ff', 'Все подставлено'],
+  [MODULE_STATUS.ERROR]: ['!', '#ff0000', 'ОШИБКА'],
 }
 
 // ======================================================

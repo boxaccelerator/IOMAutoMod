@@ -1,7 +1,7 @@
 {
-  "name": "iomauto_extension",
-  "version": "1.3.9",
+  "name": "IOMAutoMod",
+  "version": "3.0.3",
   "repository": "git@github.com:boxaccelerator/IOMAutoMod.git",
-  "author": "Yozha",
+  "author": "boxaccelerator",
   "license": "UNLICENSED"
 }

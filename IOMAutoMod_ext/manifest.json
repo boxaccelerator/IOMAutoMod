@@ -1,8 +1,8 @@
 {
   "name": "Авто ИОМ [Mod]",
   "short_name": "IOMAutoMod",
-  "version": "3.0.1",
-  "manifest_version": 5,
+  "version": "3.0.3",
+  "manifest_version": 6,
   "description": "Автоматическое решение ИОМ для НМО",
   "homepage_url": "https://github.com/boxaccelerator/IOMAutoMod",
   "icons": {
