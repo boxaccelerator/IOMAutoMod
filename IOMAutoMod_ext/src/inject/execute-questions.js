@@ -15,6 +15,16 @@ function compareAnswer(inputDataStr, pageStr) {
 }
 
 function startExecute(mapResult) {
+  const style = document.createElement('style');
+  style.innerHTML = `
+.mat-mdc-radio-button {
+    background-color: #ff50ff;
+}
+.mat-mdc-checkbox {
+    background-color: #ff50ff;
+}
+      `;
+  document.head.appendChild(style);
   // todo ограничение на 10000
   // const input =  window.prompt('JSON c ответами')
   // const mapResult = JSON.parse(input)
@@ -69,14 +79,6 @@ function startExecute(mapResult) {
     const testAnswer = (getEl, checkedClassName) => {
       const isChecked = getEl().className.indexOf(checkedClassName) >= 0
       const getSpan = () => getEl().querySelector('span')
-      css(getEl(), {
-        'background-color': '#ff50ff',
-        color: '#000000'
-      });
-      css(getSpan(), {
-        'background-color': '#0080ff',
-        color: '#000000'
-      });
 
       // подходит как для множества так и для одно элемента
       const answerFromPage = getSpan().textContent
@@ -134,10 +136,6 @@ function startExecute(mapResult) {
 
     // нужно каждый раз искать, так как форма обновляется после проставление ответа
     const answersEls = document.querySelectorAll('.mat-mdc-checkbox')
-    css(answersEls, {
-      'background-color': '#ccccff',
-      color: '#000000'
-    });
     const isMultiple = answersEls.length > 0
     if (isMultiple) {
       // НЕСКОЛЬКО ОТВЕТОВ
@@ -154,10 +152,6 @@ function startExecute(mapResult) {
     } else {
       // ОДИН ОТВЕТ
       const radioEls = document.querySelectorAll('.mat-mdc-radio-button')
-      css(radioEls, {
-        'background-color': '#ccccff',
-        color: '#000000'
-      });
       radioEls.forEach((radioEl, i) => {
         testAnswer(
           // radioEl,
@@ -189,10 +183,6 @@ ${Object.keys(pageAnswersMap).map((qu, index) => `${index + 1}) ${qu}`).join('\n
               if (index === (manualIndexPlus - 1)) {
                 // вызываем поиск элемента, так как если их много дом каждый раз меняется
                 const getSpanInner = pageAnswersMap[title]
-                css(getSpanInner, {
-                  'background-color': '#00ff00',
-                  color: '#005000'
-                });
                 getSpanInner().click()
                 hasAnyAnswer = true
               }
